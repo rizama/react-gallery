@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import API from '../../services/request';
 import { actionAddComment, actionAddFavorite } from '../../configs/redux/action';
+import './Album.css';
 
 export class Album extends Component {
 
@@ -43,8 +44,11 @@ export class Album extends Component {
             albumId: this.state.album.id,
             content: this.state.comment
         }
-        this.props.addComment(new_comment)
 
+        if (!new_comment.content.trim()) return;
+
+        this.props.addComment(new_comment)
+            
         this.setState({
             ...this.state,
             comment: ''
@@ -64,7 +68,6 @@ export class Album extends Component {
     }
 
     render() {
-        // console.log(this.props.favorites);
         return (
             <div className="container-fluid mt-4">
                 <div className="jumbotron">
@@ -75,7 +78,6 @@ export class Album extends Component {
                         <div className="card-columns">
                             {
                                 this.state.photos.map((photo, index) => {
-                                    console.log(this.props.favorites[index] != undefined)
                                     return (
                                         <div className="card" key={photo.id}>
                                             <img src={photo.url} className="card-img-top" alt="thumb" />
@@ -97,14 +99,14 @@ export class Album extends Component {
                                 <p className="card-text">Hi..</p>
                                 <div className="form-group">
                                     <label htmlFor="comment">Comment Here...</label>
-                                    <input type="text" className="form-control" placeholder="Comment" id="comment" aria-describedby="comment" onChange={this.handleComment} value={this.state.comment} />
+                                    <input type="text" className="form-control" placeholder="Comment" id="comment" aria-describedby="comment" onChange={this.handleComment} value={this.state.comment}/>
                                     <small id="info" className="form-text text-muted">I'm very appreciated it.</small>
                                 </div>
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmitComment}>Submit</button>
                             </div>
                             <ul className="list-group list-group-flush">
                                 {
-                                    this.props.comments.filter(comment => comment.albumId == this.albumId).map((item, index) => {
+                                    this.props.comments.filter(comment => comment.albumId === parseInt(this.albumId)).map((item, index) => {
                                         return (
                                             <li className="list-group-item" key={index}>{item.content}</li>
                                         )
@@ -112,8 +114,8 @@ export class Album extends Component {
                                 }
                             </ul>
                             <div className="card-body">
-                                <a href="#" onClick={() => this.handleDetailUser(this.state.user?.id)} className="card-link">{this.state.user?.name}</a>
-                                <span href="#" className="card-link">{this.state.user?.email}</span>
+                                <span onClick={() => this.handleDetailUser(this.state.user?.id)} className="card-link cursor">{this.state.user?.name}</span>
+                                <span className="card-link cursor">{this.state.user?.email}</span>
                             </div>
                         </div>
                     </div>

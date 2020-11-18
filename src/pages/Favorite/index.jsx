@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 export class Favorite extends Component {
 
     render() {
-        console.log(this.props.favorites);
         return (
             <div className="container mt-4">
                 <div className="card-columns ">

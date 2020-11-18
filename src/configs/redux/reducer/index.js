@@ -20,8 +20,8 @@ const reducer = (state = initialState, action) => {
             }
         case "ADD_FAVORITE":
             let add_favorite = state.favorites
-            let data = state.favorites.filter(favorite => favorite.id == action.value.id)
-            if (data.length == 0) {
+            let data = state.favorites.filter(favorite => favorite.id === action.value.id)
+            if (data.length === 0) {
                 add_favorite.push(action.value)
             }
             return {

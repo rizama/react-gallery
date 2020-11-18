@@ -48,6 +48,7 @@ class Home extends Component {
             if (album.title.toLowerCase().includes(term.toLowerCase()) || album.user.name.toLowerCase().includes(term.toLowerCase())) {
                 return album
             }
+            return null;
         })
 
         this.setState({
