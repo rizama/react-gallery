@@ -1,0 +1,1 @@
+export const hostPlaceholder = 'https://jsonplaceholder.typicode.com'

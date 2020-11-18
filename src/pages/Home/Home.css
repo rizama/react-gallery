@@ -1,0 +1,3 @@
+.card-body p.card-title:hover {
+    cursor: pointer;
+}
