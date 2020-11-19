@@ -19,3 +19,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - API thumbnail image from https://picsum.photos/
 
 ## Screenshot
+![gallery](https://user-images.githubusercontent.com/26889811/99653856-26392780-2a8c-11eb-867b-f41d8c542a41.gif)
